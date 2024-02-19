@@ -37,7 +37,7 @@ public class PostAPITest extends TestBase{
 	}
 	
 	@Test
-	public void postAITTest() throws ClientProtocolException, IOException {
+	public void postAPITest() throws ClientProtocolException, IOException {
 		restClient=new RestClient();
 		closeableHttpResponse = restClient.get(url);
 		
@@ -48,13 +48,14 @@ public class PostAPITest extends TestBase{
 		Users actualUsers = new Users("morpheus","leader");
 		
 		// convert Object to Json file data : Marshaling		
-		objectMapper.writeValue(new File("C:\\Users\\Abhay\\eclipse-workspace-RestAssured\\RestAPIPractice\\src\\main\\java\\com\\qa\\data\\users.json"), actualUsers);
+		objectMapper.writeValue(new File("C:\\Users\\Abhay\\eclipse-workspace-RestAssured\\RestAPIHttpPractice\\src\\main\\java\\com\\qa\\data\\users.json"),actualUsers);
+		
 		
 		//convert Object to json string
 		String usersJasonString = objectMapper.writeValueAsString(actualUsers);
 		System.out.println(usersJasonString);
 		
-		closeableHttpResponse = restClient.post(url, usersJasonString, headerMap);//hot the post API
+		closeableHttpResponse = restClient.post(url, usersJasonString, headerMap);//hit the post API
 		
 		//find and assert status code
 		int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();

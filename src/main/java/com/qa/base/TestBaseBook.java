@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class TestBase {
+public class TestBaseBook {
 	
 	public int RESPONSE_STATUS_CODE_200=200;
 	public int RESPONSE_STATUS_CODE_201=201;
@@ -15,11 +15,11 @@ public class TestBase {
 	
 	public Properties prop;
 	
-	public TestBase() {
-				
+	public TestBaseBook() {
+		
 		try {
-			prop = new Properties();		
-			FileInputStream fis = new FileInputStream("C:\\Users\\Abhay\\eclipse-workspace-RestAssured\\RestAPIHttpPractice\\src\\main\\java\\com\\qa\\config\\config.properties");
+			prop = new Properties();
+			FileInputStream fis = new FileInputStream("C:\\Users\\Abhay\\eclipse-workspace-RestAssured\\RestAPIHttpPractice\\src\\main\\java\\com\\qa\\config\\books.properties");
 			prop.load(fis);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
