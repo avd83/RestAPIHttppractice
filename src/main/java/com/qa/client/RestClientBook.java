@@ -21,6 +21,17 @@ public class RestClientBook {
 		return closeableHttpResponse;
 	}
 	
+	public CloseableHttpResponse get(String url,HashMap<String,String> headerMap)throws ClientProtocolException, IOException {
+		CloseableHttpClient httpClient = HttpClients.createDefault();
+		HttpGet httpget = new HttpGet(url);
+				
+		for(Map.Entry<String,String> entry : headerMap.entrySet()){			
+			httpget.addHeader(entry.getKey(),entry.getValue());			
+		}	
+		CloseableHttpResponse closeableHttpResponse = httpClient.execute(httpget);
+		return closeableHttpResponse;
+	}
+	
 	public CloseableHttpResponse post(String url,String entryString,HashMap<String,String> headerMap) throws ClientProtocolException, IOException {
 	CloseableHttpClient httpClient = HttpClients.createDefault();//HTTP request created
 	HttpPost httpPost = new HttpPost(url);
